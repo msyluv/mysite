@@ -1,5 +1,8 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%> 
 <%@ page contentType="text/html;charset=UTF-8" %>
-<%@ page import="java.util.List" %>
+<% pageContext.setAttribute("newLineChar", "\n"); %>
 <!doctype html>
 <html>
 <head>
@@ -10,11 +13,11 @@
 <body>
 	<div id="container">
 		<div id="header">
-			<jsp:include page="/views/include/header.jsp" flush="false"/>
+			<c:import url="/views/include/header.jsp" />
 		</div>
 		<div id="content">
 			<div id="guestbook">
-				<form action="/mysite/guestbook" method="post">
+				<form action="guestbook" method="post">
 					<input type="hidden" name="a" value="insert">
 					<table>
 						<tr>
@@ -31,27 +34,33 @@
 				</form>
 				<ul>
 					<li>
+						<c:forEach items="${list }"  var="vo" varStatus="status">
 						<table>
 							<tr>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td><a href="">삭제</a></td>
+								<td>${status.count }</td>
+								<td>${vo.name }</td>
+								<td>${vo.regDate }</td>
+								<td><a href="guestbook?a=deleteform&no=${vo.no }">삭제</a></td>
 							</tr>
 							<tr>
-								<td colspan=4></td>
+								<td colspan=4>
+									${fn:replace( vo.message, newLineChar, "<br>" ) }			
+								</td>
 							</tr>
 						</table>
 						<br>
+						</c:forEach>
 					</li>
 				</ul>
 			</div>
 		</div>
 		<div id="navigation">
-			<jsp:include page="/views/include/navigation.jsp"/>
+			<c:import url="/views/include/navigation.jsp">
+				<c:param name="type">guestbook</c:param>
+			</c:import>
 		</div>
 		<div id="footer">
-			<p>(c)opyright 2014 </p>
+			<c:import url="/views/include/footer.jsp"/>
 		</div>
 	</div>
 </body>

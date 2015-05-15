@@ -1,3 +1,6 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="fn"%>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <!doctype html>
 <html>
@@ -9,25 +12,27 @@
 <body>
 	<div id="container">
 		<div id="header">
-			<jsp:include page = "/views/include/header.jsp" flush="false"/>
+			<c:import url="/views/include/header.jsp"  />
 		</div>
 		<div id="content">
 			<div id="guestbook" class="delete-form">
-				<form method="post" action="/mysite/guestbook">
+				<form method="post" action="guestbook">
 					<input type="hidden" name="a" value="delete">
-					<input type='hidden' name="no" value="">
+					<input type='hidden' name="no" value="${param.no }">
 					<label>비밀번호</label>
 					<input type="password" name="password">
 					<input type="submit" value="확인">
 				</form>
-				<a href="/mysite/guestbook?a=gusetbook">방명록 리스트</a>
+				<a href="guestbook">방명록 리스트</a>
 			</div>
 		</div>
 		<div id="navigation">
-			<jsp:include page = "/views/include/navigation.jsp" flush = "false"/>
+			<c:import url="/views/include/navigation.jsp">
+				<c:param name="type">guestbook</c:param>
+			</c:import>
 		</div>
 		<div id="footer">
-			<jsp:include page = "/views/include/footer.jsp" flush = "false"/>
+			<c:import url="/views/include/footer.jsp"/>
 		</div>
 	</div>
 </body>
