@@ -59,7 +59,7 @@
 					</tr>										
 				</table>
 				<div class="bottom">
-					<a href="" id="new-book">글쓰기</a>
+					<a href="/mysite/views/board/write.jsp" id="new-book">글쓰기</a>
 				</div>				
 			</div>
 		</div>
