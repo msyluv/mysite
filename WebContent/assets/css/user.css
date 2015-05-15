@@ -18,7 +18,7 @@ fieldset				{ border:none }
 input[type="submit"]	{ display:block; width:80px; margin:20px auto }
 
 #login-form	{
-	width:160px;
+	width:175px;
 	padding:10px;
 	border:1px solid #666;
 	border-radius: 10px;

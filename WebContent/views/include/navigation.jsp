@@ -5,17 +5,17 @@
 <ul>
 	<c:choose>
 		<c:when test="${param.type == 'main'}" >
-			<li class="selected">안대혁</li>
+			<li class="selected"><a href="#">안대혁</a></li>
 			<li><a href="">방명록</a></li>
 			<li><a href="">게시판</a></li>
 		</c:when>
 		<c:when test="${param.type == 'board'}" >
-			<li>안대혁</li>
+			<li><a href="/mysite/">안대혁</a></li>
 			<li><a href="">방명록</a></li>
 			<li class="selected"><a href="">게시판</a></li>
 		</c:when>
 		<c:otherwise>
-			<li>안대혁</li>
+			<li><a href="/mysite/">안대혁</a></li>
 			<li><a href="">방명록</a></li>
 			<li><a href="">게시판</a></li>
 		</c:otherwise>
